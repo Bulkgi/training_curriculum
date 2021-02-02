@@ -15,7 +15,7 @@ class CalendarsController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:date, :plan)
+    params.require(:calendars).permit(:date, :plan)
   end
 
   def get_week
@@ -28,8 +28,7 @@ class CalendarsController < ApplicationController
     @week_days = []
 
     plans = Plan.where(date: @todays_date..@todays_date + 6)
-    
-    i = 0
+
     7.times do |x|
       today_plans = []
       plans.each do |plan|
